@@ -11,7 +11,8 @@ body {
   font-weight: 400;
   color: #eee;
 
-  background: rgba(20, 30, 100, 0.9);
+  background: #03060d;
+  overflow-x: hidden;
 }
 
 .container {
@@ -30,6 +31,10 @@ body {
 .global-title,
 .global-p {
   margin: 0;
+}
+
+.global-img {
+  display: block;
 }
 
 .global-list {
