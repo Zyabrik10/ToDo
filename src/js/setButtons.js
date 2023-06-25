@@ -7,6 +7,7 @@ import {
   setCloseMwOnEscape,
   setCloseMwByClickingOnBackground,
 } from './mw-functions';
+import { renderExactToDo } from './renderExactToDo';
 
 export function setRemoveButton() {
   $('.remove-todo-button').click(function () {
@@ -19,6 +20,7 @@ export function setRemoveButton() {
 export function setEditButton() {
   $('.edit-todo-button').click(function () {
     const id = $(this).attr('data-id');
+    const q = $(this).attr('data-q');
     const { name, task_list } = todo_list[id];
 
     show($('.mw.edit-todo'));
@@ -53,9 +55,7 @@ export function setEditButton() {
       else todo_list[id].isDone = false;
 
       saveToDoList();
-
-      $('.todo-list').html('');
-      renderToDoList();
+      renderExactToDo({ id, q });
     });
   });
 }
