@@ -2,7 +2,11 @@ import { removeFromToDoList, saveToDoList } from './todo-list-functions';
 import { toggleToDoInfo } from './toggleToDoInfo';
 import { todo_list } from './todo-list';
 import { renderToDoList } from './renderToDoList';
-import { show, hide, setOnKey } from './mw-functions';
+import {
+  show,
+  setCloseMwOnEscape,
+  setCloseMwByClickingOnBackground,
+} from './mw-functions';
 
 export function setRemoveButton() {
   $('.remove-todo-button').click(function () {
@@ -15,19 +19,17 @@ export function setRemoveButton() {
 export function setEditButton() {
   $('.edit-todo-button').click(function () {
     const id = $(this).attr('data-id');
+    const { name, task_list } = todo_list[id];
 
-    const { name, task_list } = todo_list[$(this).attr('data-id')];
     show($('.mw.edit-todo'));
-    setOnKey();
 
-    $('.mw.mw.edit-todo').mousedown(function (e) {
-      if (e.target.classList.contains('mw')) {
-        hide($('.mw.mw.edit-todo'));
-        $(window).off('keydown');
-      }
-    });
+    // set mw closing methods
+    setCloseMwOnEscape();
+    setCloseMwByClickingOnBackground('.mw.edit-todo');
 
     $('.mw-edit-title').text(name);
+
+    // generate blocks with task and render `em
     let tasks = task_list.map(({ text, isDone, id }) => {
       return `
         <li>
@@ -50,15 +52,9 @@ export function setEditButton() {
         todo_list[id].isDone = true;
       else todo_list[id].isDone = false;
 
-      $('.todo-list').html('');
       saveToDoList();
-      renderToDoList();
-    });
 
-    $('.edit-todo .todo-title-input').on('input', function () {
-      todo_list[id].name = $(this).val().trim();
       $('.todo-list').html('');
-      saveToDoList();
       renderToDoList();
     });
   });

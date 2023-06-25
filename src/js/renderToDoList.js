@@ -9,9 +9,9 @@ export function renderToDoList() {
     const { name, isDone } = todo_list[id];
     els += getElemntToDoItem({ name, isDone, id });
   }
-  toggleToDoInfo();
 
   $('.todo-list').html(els);
+  toggleToDoInfo();
   setEditButton();
   setRemoveButton();
 }
