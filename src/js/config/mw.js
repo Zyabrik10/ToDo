@@ -1,9 +1,8 @@
 import {
   setCloseMwOnEscape,
   show,
-  hide,
   setCloseMwByClickingOnBackground,
-} from './mw-functions';
+} from '../mw-functions';
 
 $('.button-todo-add').click(function () {
   show($('.mw.add-todo'));

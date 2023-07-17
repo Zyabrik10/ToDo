@@ -1,8 +1,6 @@
-import './js/mw';
-import './js/input-active';
 import './js/todo-list';
-import './js/renderToDo';
-import './js/add-task';
-import './js/add-todo';
-import { renderToDoList } from './js/renderToDoList';
-renderToDoList();
+import './js/config/mw';
+import './js/config/add-task';
+import './js/config/add-todo';
+import './js/config/input-active';
+import './js/config/initRenderToDoList';

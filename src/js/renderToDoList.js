@@ -1,6 +1,6 @@
 import { todo_list } from './todo-list';
 import { toggleToDoInfo } from './toggleToDoInfo';
-import { getElemntToDoItem } from './getElemntToDoItem';
+import ToDoItem from './Component/ToDoItem';
 import { setEditButton, setRemoveButton } from './setButtons';
 
 export function renderToDoList() {
@@ -8,7 +8,7 @@ export function renderToDoList() {
     q = 0;
   for (let id in todo_list) {
     const { name, isDone } = todo_list[id];
-    els += getElemntToDoItem({ name, isDone, id, q });
+    els += ToDoItem({ name, isDone, id, q });
     q += 1;
   }
 

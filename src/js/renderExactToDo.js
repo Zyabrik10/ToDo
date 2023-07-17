@@ -1,7 +1,6 @@
 import { todo_list } from './todo-list';
 
 export function renderExactToDo({ id, q }) {
-  console.log(id, q);
   const li = $(`.todo-list > li[data-q=${q}]`);
   const { name, isDone } = todo_list[id];
 

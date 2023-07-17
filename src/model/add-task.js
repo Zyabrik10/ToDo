@@ -1,12 +1,7 @@
+import ToDoTaskItem from '../js/Component/ToDoTaskItem';
+
 export function addTaskModel() {
-  const li = $(`
-        <li>
-          <p class="mw-task-name global-p">${$('.todo-task-input')
-            .val()
-            .trim()}</p>
-          <button class="mw-task-remove-button global-button" type="button">&times;</button>
-        </li>
-    `);
+  const li = $(ToDoTaskItem());
 
   $('#add-todo .mw-task-list').append(li);
   $('#add-todo .mw-task-list > li:last-child').hide().fadeIn();

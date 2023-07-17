@@ -1,5 +1,5 @@
-export function getElemntToDoItem({ id, name, isDone, q }) {
-  return `
+const ToDoItem = ({ id, name, isDone, q }) =>
+  `
   <li class="todo-item flex-container-item" data-id="${id}" data-q="${q}">
             <p class="todo-item-status ${
               isDone ? 'done' : 'undone'
@@ -15,4 +15,5 @@ export function getElemntToDoItem({ id, name, isDone, q }) {
             </ul>
           </li>
   `;
-}
+
+export default ToDoItem;

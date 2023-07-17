@@ -1,13 +1,13 @@
 import { removeFromToDoList, saveToDoList } from './todo-list-functions';
 import { toggleToDoInfo } from './toggleToDoInfo';
 import { todo_list } from './todo-list';
-import { renderToDoList } from './renderToDoList';
 import {
   show,
   setCloseMwOnEscape,
   setCloseMwByClickingOnBackground,
 } from './mw-functions';
 import { renderExactToDo } from './renderExactToDo';
+import ToDoTaskElemnt from './Component/ToDoTaskElemnt';
 
 export function setRemoveButton() {
   $('.remove-todo-button').click(function () {
@@ -32,16 +32,10 @@ export function setEditButton() {
     $('.mw-edit-title').text(name);
 
     // generate blocks with task and render `em
-    let tasks = task_list.map(({ text, isDone, id }) => {
-      return `
-        <li>
-          <p class="mw-task-name global-p">${text}</p>
-          <input class="mw-task-toggle-button global-button" type="checkbox" ${
-            isDone ? 'checked' : ''
-          } data-id="${id}">
-        </li>
-      `;
-    });
+    let tasks = task_list.map(({ text, isDone, id }) =>
+      ToDoTaskElemnt({ text, isDone, id })
+    );
+    
     $('.edit-todo .mw-task-list').html(tasks);
 
     $('.mw-task-toggle-button').change(function () {
